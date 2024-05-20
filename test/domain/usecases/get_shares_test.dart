@@ -4,8 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:challenge1/features/shares/domain/repositories/share_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:challenge1/features/shares/domain/usecases/get_shares.dart';
-
-class MockSharesRepository extends Mock implements SharesRepository {}
+import 'get_shares_test.mocks.dart';
 
 @GenerateNiceMocks([MockSpec<SharesRepository>()])
 void main() {
