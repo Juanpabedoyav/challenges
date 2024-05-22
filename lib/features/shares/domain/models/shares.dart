@@ -20,7 +20,7 @@ class Shares {
       copyright: json['copyright'] as String,
       terms: json['terms'] as String,
       privacy: json['privacy'] as String,
-      data: SharesData.fromJson(json['data'] as Map<String, dynamic>),
+      data: SharesData.fromJson(json),
     );
   }
   // convert Shares to JSON
@@ -38,7 +38,7 @@ class Shares {
 class SharesData {
   final String code;
   final String name;
-  final Map<String, double> pairs;
+  final Map<String, dynamic> pairs;
 
   SharesData({
     required this.code,
@@ -51,7 +51,7 @@ class SharesData {
     return SharesData(
       code: json['code'] as String,
       name: json['name'] as String,
-      pairs: json['pairs'] as Map<String, double>,
+      pairs: json['pairs'] as Map<String, dynamic>,
     );
   }
 

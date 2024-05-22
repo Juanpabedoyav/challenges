@@ -16,10 +16,9 @@ void main() {
     usecase = GetShares(mockSharesRepository);
   });
 
-  final testShareList = [
-    SharesData(code: 'code', name: 'name', pairs: {'1': 1.0, '2': 2.0}),
-    SharesData(code: 'code', name: 'name', pairs: {'1': 1.0, '2': 4.0})
-  ];
+  final testShareList =
+      SharesData(code: "GBP", name: "British Pound", pairs: {"GBPBBD": 2.541});
+
   test('should return shares', () async {
     // arrange
     when(mockSharesRepository.getShares())

@@ -3,11 +3,11 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
-import 'package:challenge1/features/shares/domain/models/shares.dart' as _i4;
+import 'package:challenge1/features/shares/domain/models/shares.dart' as _i2;
 import 'package:challenge1/features/shares/domain/repositories/share_repository.dart'
-    as _i2;
+    as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -23,18 +23,40 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeSharesData_0 extends _i1.SmartFake implements _i2.SharesData {
+  _FakeSharesData_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [SharesRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSharesRepository extends _i1.Mock implements _i2.SharesRepository {
+class MockSharesRepository extends _i1.Mock implements _i3.SharesRepository {
   @override
-  _i3.Future<List<_i4.SharesData>> getShares() => (super.noSuchMethod(
+  _i4.Future<_i2.SharesData> getShares() => (super.noSuchMethod(
         Invocation.method(
           #getShares,
           [],
         ),
-        returnValue: _i3.Future<List<_i4.SharesData>>.value(<_i4.SharesData>[]),
+        returnValue: _i4.Future<_i2.SharesData>.value(_FakeSharesData_0(
+          this,
+          Invocation.method(
+            #getShares,
+            [],
+          ),
+        )),
         returnValueForMissingStub:
-            _i3.Future<List<_i4.SharesData>>.value(<_i4.SharesData>[]),
-      ) as _i3.Future<List<_i4.SharesData>>);
+            _i4.Future<_i2.SharesData>.value(_FakeSharesData_0(
+          this,
+          Invocation.method(
+            #getShares,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.SharesData>);
 }
