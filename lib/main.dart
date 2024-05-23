@@ -1,5 +1,9 @@
+import 'package:challenge1/features/shares/presentation/bloc/shares/shares_bloc.dart';
+import 'package:challenge1/features/shares/presentation/bloc/shares/shares_event.dart';
+import 'package:challenge1/features/shares/presentation/pages/shares_screen.dart';
+import 'package:challenge1/injection_container.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,14 +15,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [],
-        child: MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
-            home: Container()));
+    return MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: BlocProvider(
+          create: (context) => getIt<SharesBloc>()..add(FetchShares()),
+          child: const SharesScreen(),
+        ));
   }
 }

@@ -8,7 +8,11 @@ class ShareRepositoryImpl implements SharesRepository {
   ShareRepositoryImpl({required this.dataSourceImpl});
   @override
   Future<SharesData> getShares() async {
-    final sharesData = await dataSourceImpl.getShares();
-    return sharesData;
+    try {
+      final sharesData = await dataSourceImpl.getShares();
+      return sharesData;
+    } on Exception catch (e) {
+      throw Exception('Error fetching shares ShareRepositoryImpl: $e');
+    }
   }
 }
