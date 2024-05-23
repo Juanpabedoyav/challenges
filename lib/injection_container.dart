@@ -7,21 +7,22 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
 final getIt = GetIt.instance;
+
 void init() {
-//bloc
-  getIt.registerFactory(() => SharesBloc(getShares: getIt()));
-
-  //use cases
-  getIt.registerLazySingleton(() => GetShares(getIt()));
-
-  // Repositories
-  getIt.registerLazySingleton<SharesRepository>(
-      () => ShareRepositoryImpl(dataSourceImpl: getIt()));
+  // Http Services
+  getIt.registerLazySingleton(() => http.Client());
 
   // Data Sources
   getIt.registerLazySingleton<SharesDataSourceImpl>(
-      () => SharesDataSourceImpl(client: http.Client()));
+      () => SharesDataSourceImpl(client: getIt<http.Client>()));
 
-  // Http Services
-  getIt.registerLazySingleton(() => http.Client());
+  // Repositories
+  getIt.registerLazySingleton<SharesRepository>(
+      () => ShareRepositoryImpl(dataSourceImpl: getIt<SharesDataSourceImpl>()));
+
+  // Use cases
+  getIt.registerLazySingleton(() => GetShares(getIt<SharesRepository>()));
+
+  // Bloc
+  getIt.registerFactory(() => SharesBloc(getShares: getIt<GetShares>()));
 }
