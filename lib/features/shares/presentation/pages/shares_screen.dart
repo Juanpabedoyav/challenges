@@ -1,26 +1,20 @@
-import 'package:challenge1/features/shares/presentation/bloc/shares/shares_bloc.dart';
-import 'package:challenge1/features/shares/presentation/bloc/shares/shares_state.dart';
-import 'package:challenge1/features/shares/presentation/widgets/shares_list.dart';
+import 'package:challenge1/features/shares/presentation/provider/shares_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
-class SharesScreen extends StatelessWidget {
+class SharesScreen extends StatefulWidget {
   const SharesScreen({super.key});
 
   @override
+  State<SharesScreen> createState() => _SharesScreenState();
+}
+
+class _SharesScreenState extends State<SharesScreen> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<SharesBloc, SharesState>(
-        builder: (context, state) {
-          if (state is FetchSharesLoading) {
-            return const CircularProgressIndicator();
-          } else if (state is FetchSharesLoaded) {
-            return SharesList(sharesData: state.shares);
-          } else if (state is FetchSharesError) {
-            return Text(state.error);
-          }
-          return Container();
-        },
+    return Container(
+      child: Text(
+        context.watch<SharesProvider>().getSharesUseCase().toString(),
       ),
     );
   }
