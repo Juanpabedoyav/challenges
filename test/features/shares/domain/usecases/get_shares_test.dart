@@ -16,8 +16,22 @@ void main() {
     usecase = GetShares(mockSharesRepository);
   });
 
-  final testShareList =
-      SharesData(code: "GBP", name: "British Pound", pairs: {"GBPBBD": 2.541});
+  final testShareList = Shares(
+      meta: SharesMeta(
+          symbol: "GBP",
+          interval: "1m",
+          currencyBase: "USD",
+          currencyQuote: "GBP",
+          type: "spot"),
+      values: [
+        SharesValue(
+            datetime: DateTime.parse("2023-01-01"),
+            open: "1.2345",
+            high: "1.2345",
+            low: "1.2345",
+            close: "1.2345")
+      ],
+      status: "ok");
 
   test('should return shares', () async {
     // arrange

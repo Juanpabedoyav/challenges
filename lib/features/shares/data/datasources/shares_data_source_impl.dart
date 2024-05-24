@@ -8,26 +8,25 @@ class SharesDataSourceImpl implements SharesRepository {
 
   SharesDataSourceImpl({required this.client});
 
-  static const BASE_URL = 'https://ziff.p.rapidapi.com';
-  static const API_KEY = '3039ed9becmsh30b3d62963b1ff4p1a6367jsnfe145e558f5a';
+  static const BASE_URL =
+      'https://api.twelvedata.com/time_series?symbol=COP/ARS,COP/VEF&interval=1month&apikey=86a190ff9310404fbbb5e2c9e0e74d8a';
 
   @override
-  Future<SharesData> getShares() async {
+  Future<Shares> getShares() async {
     final response = await client.get(
-      Uri.parse("$BASE_URL/GBP/1.2345/2.5678"),
-      headers: {
-        'x-rapidapi-host': 'ziff.p.rapidapi.com',
-        'x-rapidapi-key': API_KEY,
-      },
+      Uri.parse(BASE_URL),
     );
 
     if (response.statusCode == 200) {
-      final responseBody = json.decode(response.body);
-      final data = responseBody as Map<String, dynamic>;
-      final sharesData = SharesData.fromJson(data);
-      return sharesData;
+      try {
+        final responseBody = json.decode(response.body);
+        final sharesData = Shares.fromJson(responseBody);
+        return sharesData;
+      } catch (e) {
+        throw Exception('Error parsing data: $e');
+      }
     } else {
-      throw Exception('Invalid data format');
+      throw Exception('Failed to load shares data: ${response.statusCode}');
     }
   }
 }

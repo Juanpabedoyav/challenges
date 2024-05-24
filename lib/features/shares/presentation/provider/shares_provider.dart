@@ -8,11 +8,11 @@ class SharesProvider extends ChangeNotifier {
   SharesProvider(this.getSharesUseCase);
 
   // Initial state
-  SharesData? _shares;
+  Shares? _shares;
   bool _isLoading = true;
 
   // Getters
-  SharesData? get shares => _shares;
+  Shares? get shares => _shares;
   bool get isLoading => _isLoading;
 
   // Async methods

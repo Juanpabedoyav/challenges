@@ -34,8 +34,8 @@ class _FakeClient_0 extends _i1.SmartFake implements _i2.Client {
         );
 }
 
-class _FakeSharesData_1 extends _i1.SmartFake implements _i3.SharesData {
-  _FakeSharesData_1(
+class _FakeShares_1 extends _i1.SmartFake implements _i3.Shares {
+  _FakeShares_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -63,25 +63,24 @@ class MockSharesDataSourceImpl extends _i1.Mock
       ) as _i2.Client);
 
   @override
-  _i5.Future<_i3.SharesData> getShares() => (super.noSuchMethod(
+  _i5.Future<_i3.Shares> getShares() => (super.noSuchMethod(
         Invocation.method(
           #getShares,
           [],
         ),
-        returnValue: _i5.Future<_i3.SharesData>.value(_FakeSharesData_1(
+        returnValue: _i5.Future<_i3.Shares>.value(_FakeShares_1(
           this,
           Invocation.method(
             #getShares,
             [],
           ),
         )),
-        returnValueForMissingStub:
-            _i5.Future<_i3.SharesData>.value(_FakeSharesData_1(
+        returnValueForMissingStub: _i5.Future<_i3.Shares>.value(_FakeShares_1(
           this,
           Invocation.method(
             #getShares,
             [],
           ),
         )),
-      ) as _i5.Future<_i3.SharesData>);
+      ) as _i5.Future<_i3.Shares>);
 }

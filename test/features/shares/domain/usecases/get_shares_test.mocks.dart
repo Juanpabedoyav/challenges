@@ -23,8 +23,8 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeSharesData_0 extends _i1.SmartFake implements _i2.SharesData {
-  _FakeSharesData_0(
+class _FakeShares_0 extends _i1.SmartFake implements _i2.Shares {
+  _FakeShares_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -38,25 +38,24 @@ class _FakeSharesData_0 extends _i1.SmartFake implements _i2.SharesData {
 /// See the documentation for Mockito's code generation for more information.
 class MockSharesRepository extends _i1.Mock implements _i3.SharesRepository {
   @override
-  _i4.Future<_i2.SharesData> getShares() => (super.noSuchMethod(
+  _i4.Future<_i2.Shares> getShares() => (super.noSuchMethod(
         Invocation.method(
           #getShares,
           [],
         ),
-        returnValue: _i4.Future<_i2.SharesData>.value(_FakeSharesData_0(
+        returnValue: _i4.Future<_i2.Shares>.value(_FakeShares_0(
           this,
           Invocation.method(
             #getShares,
             [],
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.SharesData>.value(_FakeSharesData_0(
+        returnValueForMissingStub: _i4.Future<_i2.Shares>.value(_FakeShares_0(
           this,
           Invocation.method(
             #getShares,
             [],
           ),
         )),
-      ) as _i4.Future<_i2.SharesData>);
+      ) as _i4.Future<_i2.Shares>);
 }

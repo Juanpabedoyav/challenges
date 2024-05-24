@@ -1,66 +1,107 @@
 class Shares {
-  final bool success;
-  final String copyright;
-  final String terms;
-  final String privacy;
-  final SharesData data;
+  final SharesMeta meta;
+  final List<SharesValue> values;
+  final String status;
 
   Shares({
-    required this.success,
-    required this.copyright,
-    required this.terms,
-    required this.privacy,
-    required this.data,
+    required this.meta,
+    required this.values,
+    required this.status,
   });
 
-  // convert JSON into Shares
+  // Convert JSON into Shares
   factory Shares.fromJson(Map<String, dynamic> json) {
     return Shares(
-      success: json['success'] as bool,
-      copyright: json['copyright'] as String,
-      terms: json['terms'] as String,
-      privacy: json['privacy'] as String,
-      data: SharesData.fromJson(json),
+      meta: SharesMeta.fromJson(json['meta']),
+      values: (json['values'] as List<dynamic>)
+          .map((item) => SharesValue.fromJson(item as Map<String, dynamic>))
+          .toList(),
+      status: json['status'],
     );
   }
-  // convert Shares to JSON
+
+  // Convert Shares to JSON
   Map<String, dynamic> toJson() {
     return {
-      'success': success,
-      'copyright': copyright,
-      'terms': terms,
-      'privacy': privacy,
-      'data': data.toJson(),
+      'meta': meta.toJson(),
+      'values': values.map((item) => item.toJson()).toList(),
+      'status': status,
     };
   }
 }
 
-class SharesData {
-  final String code;
-  final String name;
-  final Map<String, dynamic> pairs;
+class SharesMeta {
+  final String symbol;
+  final String interval;
+  final String currencyBase;
+  final String currencyQuote;
+  final String type;
 
-  SharesData({
-    required this.code,
-    required this.name,
-    required this.pairs,
+  SharesMeta({
+    required this.symbol,
+    required this.interval,
+    required this.currencyBase,
+    required this.currencyQuote,
+    required this.type,
   });
 
-  // convert JSON into SharesData
-  factory SharesData.fromJson(Map<String, dynamic> json) {
-    return SharesData(
-      code: json['code'] as String,
-      name: json['name'] as String,
-      pairs: json['pairs'] as Map<String, dynamic>,
+  // Convert JSON into SharesMeta
+  factory SharesMeta.fromJson(Map<String, dynamic> json) {
+    return SharesMeta(
+      symbol: json['symbol'],
+      interval: json['interval'],
+      currencyBase: json['currency_base'],
+      currencyQuote: json['currency_quote'],
+      type: json['type'],
     );
   }
 
-  // convert SharesData to JSON
+  // Convert SharesMeta to JSON
   Map<String, dynamic> toJson() {
     return {
-      'code': code,
-      'name': name,
-      'pairs': pairs,
+      'symbol': symbol,
+      'interval': interval,
+      'currency_base': currencyBase,
+      'currency_quote': currencyQuote,
+      'type': type,
+    };
+  }
+}
+
+class SharesValue {
+  final DateTime datetime;
+  final String open;
+  final String high;
+  final String low;
+  final String close;
+
+  SharesValue({
+    required this.datetime,
+    required this.open,
+    required this.high,
+    required this.low,
+    required this.close,
+  });
+
+  // Convert JSON into SharesValue
+  factory SharesValue.fromJson(Map<String, dynamic> json) {
+    return SharesValue(
+      datetime: DateTime.parse(json['datetime']),
+      open: json['open'],
+      high: json['high'],
+      low: json['low'],
+      close: json['close'],
+    );
+  }
+
+  // Convert SharesValue to JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'datetime': datetime.toIso8601String(),
+      'open': open,
+      'high': high,
+      'low': low,
+      'close': close,
     };
   }
 }

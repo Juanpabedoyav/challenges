@@ -1,4 +1,5 @@
 import 'package:challenge1/features/shares/data/datasources/shares_data_source_impl.dart';
+import 'package:challenge1/features/shares/domain/models/shares.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
@@ -10,70 +11,49 @@ void main() {
   late SharesDataSourceImpl dataSource;
   late MockClient mockHttpClient;
 
-  const String turl = 'https://ziff.p.rapidapi.com/GBP/1.2345/2.5678';
+  const String turl =
+      'https://api.twelvedata.com/time_series?symbol=COP/ARS,COP/VEF&interval=1month&apikey=86a190ff9310404fbbb5e2c9e0e74d8a';
 
-  const String sampleDataResponde = '''{
-    "code": "GBP",
-    "name": "British Pound",
-    "pairs": {
-      "GBPADA": 2.5426,
-      "GBPANG": 2.291,
-      "GBPARK": 1.4737,
-      "GBPAUD": 1.907,
-      "GBPAWG": 2.287,
-      "GBPAZN": 2.16,
-      "GBPBAM": 2.288,
-      "GBPBBD": 2.541,
-      "GBPBGN": 2.288,
-      "GBPBMD": 1.271,
-      "GBPBND": 1.712,
-      "GBPBNT": 1.5955,
-      "GBPBSD": 1.271,
-      "GBPBZD": 2.562,
-      "GBPCAD": 1.735,
-      "GBPCUC": 1.271,
-      "GBPDAI": 1.2707624015247778,
-      "GBPELF": 2.3668,
-      "GBPEOS": 1.4584,
-      "GBPGRS": 2.2854,
-      "GBPKNC": 2.3728,
-      "GBPLUNA": 2.0857,
-      "GBPMAID": 2.5078,
-      "GBPMATIC": 1.7196,
-      "GBPNULS": 1.9676,
-      "GBPNZD": 2.086,
-      "GBPOMG": 1.7762,
-      "GBPPAB": 1.271,
-      "GBPSGD": 1.712,
-      "GBPSTORJ": 2.2147,
-      "GBPUSD": 1.2706480304955527,
-      "GBPUSDC": 1.2706480304955527,
-      "GBPUSDT": 1.2717,
-      "GBPXRP": 2.3377,
-      "GBPXTZ": 1.2705,
-      "GBPZRX": 2.2211
-    }
-  }''';
+  const sampleDataResponse = '''
+  {
+    "meta": {
+      "symbol": "COP/ARS",
+      "interval": "1month",
+      "currency_base": "Colombian Peso",
+      "currency_quote": "Argentinian Peso",
+      "type": "Physical Currency"
+    },
+    "values": [
+      {
+        "datetime": "2024-05-01",
+        "open": "0.22406",
+        "high": "0.23318",
+        "low": "0.22270",
+        "close": "0.23027"
+      }
+    ],
+    "status": "ok"
+  }
+  ''';
 
   setUp(() {
     mockHttpClient = MockClient();
     dataSource = SharesDataSourceImpl(client: mockHttpClient);
   });
 
-  test('should perform a GET request on a url', () async {
+  test('should return Shares when the response code is 200 (success)',
+      () async {
     // arrange
-    when(mockHttpClient.get(Uri.parse(turl), headers: {
-      'x-rapidapi-key': '3039ed9becmsh30b3d62963b1ff4p1a6367jsnfe145e558f5a',
-      'x-rapidapi-host': 'ziff.p.rapidapi.com'
-    })).thenAnswer((_) async => http.Response(sampleDataResponde, 200));
+    when(mockHttpClient.get(Uri.parse(turl)))
+        .thenAnswer((_) async => http.Response(sampleDataResponse, 200));
 
     // act
-    await dataSource.getShares();
+    final result = await dataSource.getShares();
 
     // assert
-    verify(mockHttpClient.get(Uri.parse(turl), headers: {
-      'x-rapidapi-key': '3039ed9becmsh30b3d62963b1ff4p1a6367jsnfe145e558f5a',
-      'x-rapidapi-host': 'ziff.p.rapidapi.com'
-    })).called(1);
+    expect(result, isA<Shares>());
+    expect(result.meta.symbol, 'COP/ARS');
+    expect(result.values, hasLength(1));
+    expect(result.values[0].datetime, DateTime.parse('2024-05-01'));
   });
 }

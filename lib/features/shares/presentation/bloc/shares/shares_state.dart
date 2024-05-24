@@ -7,7 +7,7 @@ class FetchSharesInitial extends SharesState {}
 class FetchSharesLoading extends SharesState {}
 
 class FetchSharesLoaded extends SharesState {
-  final SharesData shares;
+  final Shares shares;
 
   FetchSharesLoaded(this.shares);
 }

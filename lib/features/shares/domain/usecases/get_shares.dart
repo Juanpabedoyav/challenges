@@ -6,7 +6,7 @@ class GetShares {
 
   GetShares(this.repository);
 
-  Future<SharesData> call() async {
+  Future<Shares> call() async {
     return await repository.getShares();
   }
 }
