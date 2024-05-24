@@ -2,7 +2,9 @@ import 'package:challenge1/features/shares/data/datasources/shares_data_source_i
 import 'package:challenge1/features/shares/domain/models/shares.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'shares_remote_data_source_test.mocks.dart';
+import 'package:mocktail/mocktail.dart';
+
+class MockClient extends Mock implements http.Client {}
 
 void main() {
   late SharesDataSourceImpl dataSource;
