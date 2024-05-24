@@ -12,13 +12,12 @@ class SharesScreen extends StatefulWidget {
 class _SharesScreenState extends State<SharesScreen> {
   @override
   Widget build(BuildContext context) {
+    //final sharesProvider = context.watch<SharesProvider>();
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            context.watch<SharesProvider>().getSharesUseCase().toString(),
-          ),
+          Text('hola'),
         ],
       ),
     );

@@ -9,7 +9,7 @@ class SharesDataSourceImpl implements SharesRepository {
   SharesDataSourceImpl({required this.client});
 
   static const BASE_URL =
-      'https://api.twelvedata.com/time_series?symbol=COP/ARS,COP/VEF&interval=1month&apikey=86a190ff9310404fbbb5e2c9e0e74d8a';
+      'https://api.twelvedata.com/time_series?symbol=COP/ARS&interval=1month&apikey=86a190ff9310404fbbb5e2c9e0e74d8a';
 
   @override
   Future<Shares> getShares() async {

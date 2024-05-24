@@ -9,16 +9,19 @@ class SharesProvider extends ChangeNotifier {
 
   // Initial state
   Shares? _shares;
+  List<SharesValue> _sharesList = [];
   bool _isLoading = true;
 
   // Getters
   Shares? get shares => _shares;
+  List<SharesValue> get sharesList => _sharesList;
   bool get isLoading => _isLoading;
 
   // Async methods
   Future<void> fetchShares() async {
     final shares = await getSharesUseCase();
     _shares = shares;
+    _sharesList = shares.values;
     _isLoading = false;
     notifyListeners();
   }
