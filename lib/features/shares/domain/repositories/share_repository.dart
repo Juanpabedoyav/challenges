@@ -1,5 +1,5 @@
 import 'package:challenge1/features/shares/domain/models/shares.dart';
 
 abstract class SharesRepository {
-  Future<Shares> getShares();
+  Future<List<Shares>> getShares();
 }

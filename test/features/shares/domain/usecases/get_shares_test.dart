@@ -7,41 +7,44 @@ import 'package:mocktail/mocktail.dart';
 class MockSharesRepository extends Mock implements SharesRepository {}
 
 void main() {
-  late GetShares usecase;
+  late GetShares getShares;
   late MockSharesRepository mockSharesRepository;
 
   setUp(() {
     mockSharesRepository = MockSharesRepository();
-    usecase = GetShares(mockSharesRepository);
+    getShares = GetShares(repository: mockSharesRepository);
   });
 
-  final testShareList = Shares(
-      meta: SharesMeta(
-          symbol: "GBP",
-          interval: "1m",
-          currencyBase: "USD",
-          currencyQuote: "GBP",
-          type: "spot"),
-      values: [
-        SharesValue(
-            datetime: DateTime.parse("2023-01-01"),
-            open: "1.2345",
-            high: "1.2345",
-            low: "1.2345",
-            close: "1.2345")
-      ],
-      status: "ok");
+  group('GetShares', () {
+    test('should return shares', () async {
+      final testShareList = [
+        Shares(
+            meta: SharesMeta(
+                symbol: "GBP",
+                interval: "1m",
+                currencyBase: "USD",
+                currencyQuote: "GBP",
+                type: "spot"),
+            values: [
+              SharesValue(
+                  datetime: DateTime.parse("2023-01-01"),
+                  open: "1.2345",
+                  high: "1.2345",
+                  low: "1.2345",
+                  close: "1.2345")
+            ],
+            status: "ok")
+      ];
+      // arrange
+      when(() => mockSharesRepository.getShares())
+          .thenAnswer((_) async => testShareList);
+      //act
+      final result = await getShares();
 
-  test('should return shares', () async {
-    // arrange
-    when(mockSharesRepository.getShares())
-        .thenAnswer((_) async => testShareList);
-    //act
-    final result = await usecase();
-
-    // assert
-    expect(result, testShareList);
-    verify(mockSharesRepository.getShares());
-    verifyNoMoreInteractions(mockSharesRepository);
+      // assert
+      expect(result, testShareList);
+      verify((() => mockSharesRepository.getShares())).called(1);
+      verifyNoMoreInteractions(mockSharesRepository);
+    });
   });
 }
