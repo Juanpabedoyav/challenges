@@ -2,27 +2,36 @@ import 'package:challenge1/features/shares/domain/models/shares.dart';
 import 'package:challenge1/features/shares/domain/usecases/get_shares.dart';
 import 'package:flutter/material.dart';
 
+enum SharesStatus { initial, loading, success, error }
+
 class SharesProvider extends ChangeNotifier {
-  final GetShares getSharesUseCase;
+  SharesProvider(
+      {
+      required GetShares getShares,
+      SharesStatus? initialStatus,
+      List<Shares>? shares,
+      })
+      : _getShares = getShares,
+        _status = initialStatus ?? SharesStatus.initial;
+        _shares = shares ?? [];
 
-  SharesProvider(this.getSharesUseCase);
+  //Use cases
+  final GetShares _getShares;
+  //Properties
+  SharesStatus _status;
+  SharesStatus get status => _status;
 
-  // Initial state
-  Shares? _shares;
-  List<SharesValue> _sharesList = [];
-  bool _isLoading = true;
+  final List<Shares> _shares;
+  List<Shares> get shares => List.unmodifiable(_shares);
 
-  // Getters
-  Shares? get shares => _shares;
-  List<SharesValue> get sharesList => _sharesList;
-  bool get isLoading => _isLoading;
-
-  // Async methods
+  //actions
   Future<void> fetchShares() async {
-    final shares = await getSharesUseCase();
-    _shares = shares;
-    _sharesList = shares.values;
-    _isLoading = false;
+    _status = SharesStatus.loading;
     notifyListeners();
+    final sharesList = await _getShares();
+    _shares.addAll(sharesList);
+    _status = SharesStatus.success;
   }
 }
+
+
