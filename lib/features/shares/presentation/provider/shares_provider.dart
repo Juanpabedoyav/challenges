@@ -5,33 +5,32 @@ import 'package:flutter/material.dart';
 enum SharesStatus { initial, loading, success, error }
 
 class SharesProvider extends ChangeNotifier {
-  SharesProvider(
-      {
-      required GetShares getShares,
-      SharesStatus? initialStatus,
-      List<Shares>? shares,
-      })
-      : _getShares = getShares,
-        _status = initialStatus ?? SharesStatus.initial;
-        _shares = shares ?? [];
+  SharesProvider({
+    required GetShares getShares,
+    SharesStatus? initialStatus,
+    List<Shares>? shares,
+  })  : _getShares = getShares,
+        _status = initialStatus ?? SharesStatus.initial,
+        _shares = shares ?? []; // Corrected this line
 
-  //Use cases
+  // Use cases
   final GetShares _getShares;
-  //Properties
+
+  // Properties
   SharesStatus _status;
   SharesStatus get status => _status;
 
   final List<Shares> _shares;
   List<Shares> get shares => List.unmodifiable(_shares);
 
-  //actions
+  // Actions
   Future<void> fetchShares() async {
     _status = SharesStatus.loading;
     notifyListeners();
+
     final sharesList = await _getShares();
     _shares.addAll(sharesList);
     _status = SharesStatus.success;
+    notifyListeners();
   }
 }
-
-
