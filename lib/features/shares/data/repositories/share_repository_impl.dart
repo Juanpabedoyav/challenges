@@ -9,7 +9,7 @@ class ShareRepositoryImpl implements SharesRepository {
       : _apiClient = apiClient;
 
   @override
-  Future<List<Shares>> getShares() async {
+  Future<Shares> getShares() async {
     final fetchList = await _apiClient.getShares();
     return fetchList;
   }

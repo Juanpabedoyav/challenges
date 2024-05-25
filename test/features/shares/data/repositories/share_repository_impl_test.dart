@@ -15,24 +15,30 @@ void main() {
     repository = ShareRepositoryImpl(apiClient: mockApi);
   });
 
-  final testShareList = [
-    Shares(
-        meta: SharesMeta(
-            symbol: "GBP",
-            interval: "1m",
-            currencyBase: "USD",
-            currencyQuote: "GBP",
-            type: "spot"),
-        values: [
-          SharesValue(
-              datetime: DateTime.parse("2023-01-01"),
-              open: "1.2345",
-              high: "1.2345",
-              low: "1.2345",
-              close: "1.2345")
-        ],
-        status: "ok")
-  ];
+  final testShareList = Shares(
+    data: [
+      Datum(
+        symbol: 'GBP',
+        currencyGroup: CurrencyGroup.EXOTIC,
+        currencyBase: 'USD',
+        currencyQuote: 'GBP',
+      ),
+      Datum(
+        symbol: 'EUR',
+        currencyGroup: CurrencyGroup.EXOTIC,
+        currencyBase: 'USD',
+        currencyQuote: 'EUR',
+      ),
+      Datum(
+        symbol: 'USD',
+        currencyGroup: CurrencyGroup.EXOTIC,
+        currencyBase: 'USD',
+        currencyQuote: 'USD',
+      ),
+    ],
+    count: 3,
+    status: 'ok',
+  );
   group('description', () {
     test('should return shares from repository', () async {
       // arrange

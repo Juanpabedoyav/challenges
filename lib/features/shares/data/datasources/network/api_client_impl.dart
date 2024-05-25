@@ -6,23 +6,24 @@ import 'package:http/http.dart' as http;
 class ApiClientImpl implements SharesRepository {
   final client = http.Client();
 
-  static const BASE_URL =
-      'https://api.twelvedata.com/time_series?symbol=COP/ARS&interval=1month&apikey=86a190ff9310404fbbb5e2c9e0e74d8a';
+  static const BASE_URL = 'https://api.twelvedata.com/forex_pairs?source=docs';
 
   @override
-  Future<List<Shares>> getShares() async {
+  Future<Shares> getShares() async {
     final response = await client.get(
       Uri.parse(BASE_URL),
     );
 
-    try {
-      final responseBody = json.decode(response.body);
-      final result = responseBody.map((e) => Shares.fromJson(e)).toList();
-      print(result);
-      return result;
-    } catch (e) {
-      if (response.statusCode == 404) return [];
-      throw Exception('Error parsing data: $e');
+    if (response.statusCode == 200) {
+      final responseBody = await jsonDecode(response.body);
+      Shares shares = Shares.fromJson(responseBody);
+      return shares;
+    } else {
+      return Shares(
+        data: [],
+        count: 0,
+        status: 'error',
+      );
     }
   }
 }
