@@ -70,6 +70,9 @@ class __SharesContentState extends State<_SharesContent> {
                     title: Text(item.symbol),
                     subtitle: Text(item.currencyBase),
                     trailing: Text(item.currencyQuote),
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            Center(child: Text(item.symbol)))),
                   );
                 });
           },
