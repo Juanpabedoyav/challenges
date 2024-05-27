@@ -30,12 +30,11 @@ class _SharesViewState extends State<SharesView> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      {
-        context.read<SharesProvider>().fetchShares();
-      }
+      Provider.of<SharesProvider>(context, listen: false).fetchShares();
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     final status = context.select((SharesProvider provider) => provider.status);
     return status == SharesStatus.initial
@@ -56,12 +55,24 @@ class _SharesContent extends StatefulWidget {
 class __SharesContentState extends State<_SharesContent> {
   @override
   Widget build(BuildContext context) {
-    final status = context.select((SharesProvider provider) => provider.status);
-    return status == SharesStatus.loading
-        ? const Center(child: CircularProgressIndicator())
-        : Padding(
-            padding: const EdgeInsets.all(45),
-            child: Text("$status shares"),
-          );
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Shares'),
+        ),
+        body: Consumer<SharesProvider>(
+          builder: (context, value, child) {
+            final shareList = value.shares;
+            return ListView.builder(
+                itemCount: value.shares.length,
+                itemBuilder: (context, index) {
+                  final item = shareList[index];
+                  return ListTile(
+                    title: Text(item.symbol),
+                    subtitle: Text(item.currencyBase),
+                    trailing: Text(item.currencyQuote),
+                  );
+                });
+          },
+        ));
   }
 }

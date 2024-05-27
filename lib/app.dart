@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: MultiProvider(
-        providers: [Provider.value(value: getShares)],
+        providers: [
+          Provider.value(value: getShares),
+        ],
         child: const SharesScreen(),
       ),
     );

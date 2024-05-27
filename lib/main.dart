@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 late SharedPreferences sharedPref;
 final api = ApiClientImpl();
 final repo = ShareRepositoryImpl(apiClient: api);
-late GetShares getShares = GetShares(repository: repo);
+GetShares getShares = GetShares(repository: repo);
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   sharedPref = await SharedPreferences.getInstance();

@@ -1,3 +1,4 @@
+import 'package:challenge1/features/shares/domain/models/shares.dart';
 import 'package:challenge1/features/shares/domain/usecases/get_shares.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,7 @@ enum SharesStatus { initial, loading, success, error }
 class SharesProvider extends ChangeNotifier {
   SharesProvider({
     required GetShares getShares,
+    List<Datum>? shares,
     SharesStatus? initialStatus,
   })  : _getShares = getShares,
         _status = initialStatus ?? SharesStatus.initial;
@@ -16,6 +18,8 @@ class SharesProvider extends ChangeNotifier {
   // Properties
   SharesStatus _status;
   SharesStatus get status => _status;
+  List<Datum> _shares = [];
+  List<Datum> get shares => _shares;
 
   // Actions
   Future<void> fetchShares() async {
@@ -23,7 +27,8 @@ class SharesProvider extends ChangeNotifier {
     notifyListeners();
 
     final sharesList = await _getShares();
-    print(sharesList);
+    final sharesData = sharesList.data;
+    _shares = sharesData;
     _status = SharesStatus.success;
     notifyListeners();
   }
