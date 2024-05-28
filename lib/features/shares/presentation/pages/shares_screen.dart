@@ -1,4 +1,5 @@
 import 'package:challenge1/features/shares/domain/usecases/get_shares.dart';
+import 'package:challenge1/features/shares/presentation/pages/shares_screen_detail.dart';
 import 'package:challenge1/features/shares/presentation/provider/shares_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +47,7 @@ class _SharesViewState extends State<SharesView> {
 // SharesContent
 
 class _SharesContent extends StatefulWidget {
-  const _SharesContent({super.key});
+  const _SharesContent();
 
   @override
   State<_SharesContent> createState() => __SharesContentState();
@@ -71,8 +72,9 @@ class __SharesContentState extends State<_SharesContent> {
                     subtitle: Text(item.currencyBase),
                     trailing: Text(item.currencyQuote),
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            Center(child: Text(item.symbol)))),
+                        builder: (context) => SharesScreenDetail(
+                              symbol: item.symbol,
+                            ))),
                   );
                 });
           },

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:convert';
 import 'package:challenge1/features/shares/domain/models/shares.dart';
 import 'package:challenge1/features/shares/domain/repositories/share_repository.dart';

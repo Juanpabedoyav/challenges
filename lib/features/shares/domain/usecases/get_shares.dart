@@ -8,7 +8,6 @@ class GetShares {
 
   Future<Shares> call() async {
     final shareList = await _repository.getShares();
-    print(shareList);
     return shareList;
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ScreenList extends StatelessWidget {
   const ScreenList({super.key});

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class Shares {
   final List<Datum> data;
   final int count;
