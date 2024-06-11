@@ -1,12 +1,12 @@
-import 'package:challenge1/features/shares/domain/models/shares.dart';
+import 'package:challenge1/features/shares/data/models/share_model.dart';
 import 'package:challenge1/features/shares/domain/repositories/share_repository.dart';
 
-class GetShares {
+class GetSharesUseCase {
   final SharesRepository _repository;
 
-  GetShares({required SharesRepository repository}) : _repository = repository;
+  GetSharesUseCase(this._repository);
 
-  Future<Shares> call() async {
+  Future<ShareModel> call() async {
     final shareList = await _repository.getShares();
     return shareList;
   }
