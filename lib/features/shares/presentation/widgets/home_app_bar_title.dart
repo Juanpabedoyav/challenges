@@ -27,12 +27,6 @@ class HomeAppBarTitle extends StatelessWidget {
           ),
         ),
         IconHeaderContainer(
-          configMargin: const EdgeInsets.only(right: 12),
-          iconButton: IconButton(
-              onPressed: () => print('press notification button'),
-              icon: const Icon(Icons.notifications)),
-        ),
-        IconHeaderContainer(
           iconButton: IconButton(
               onPressed: () => print('press button more'),
               icon: const Icon(Icons.more_vert)),

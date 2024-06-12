@@ -1,5 +1,4 @@
 import 'package:challenge1/features/shares/presentation/pages/home_page.dart';
-import 'package:challenge1/features/shares/presentation/pages/shares_screen.dart';
 import 'package:challenge1/features/shares/presentation/provider/shares_controller.dart';
 import 'package:challenge1/injection_container.dart';
 import 'package:flutter/material.dart';

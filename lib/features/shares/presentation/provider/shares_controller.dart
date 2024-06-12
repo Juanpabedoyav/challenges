@@ -1,25 +1,35 @@
 import 'package:challenge1/core/utils/base_controller_states.dart';
 import 'package:challenge1/features/shares/data/models/share_model.dart';
-import 'package:challenge1/features/shares/data/repositories/share_repository_impl.dart';
 import 'package:challenge1/features/shares/domain/usecases/get_shares_use_case.dart';
 import 'package:flutter/material.dart';
 
 class SharesController extends ChangeNotifier {
-  late ShareModel _shares;
-  BaseControllerStates _state = BaseControllerStates.initial;
+  SharesController({
+    required GetSharesUseCase getSharesUseCase,
+    ShareModel? shares,
+    BaseControllerStates? initialState,
+  })  : _getSharesUseCase = getSharesUseCase,
+        _shares = shares ?? ShareModel(),
+        _status = initialState ?? BaseControllerStates.initial;
 
-  BaseControllerStates get baseControllerStates => _state;
-  ShareModel? get shares => _shares;
+  //UseCase
+  final GetSharesUseCase _getSharesUseCase;
 
-  final GetSharesUseCase _getSharesUseCase =
-      GetSharesUseCase(ShareRepositoryImpl());
-  // Actions
+  //Properties
+  BaseControllerStates _status;
+  BaseControllerStates get status => _status;
+
+  ShareModel _shares;
+  ShareModel get shares => _shares;
+
+  //Actions
   Future<void> fetchShares() async {
-    _state = BaseControllerStates.loading;
+    _status = BaseControllerStates.loading;
     notifyListeners();
 
-    _shares = await _getSharesUseCase.call();
-    _state = BaseControllerStates.success;
+    final list = await _getSharesUseCase.call();
+    _shares = list;
+    _status = BaseControllerStates.success;
     notifyListeners();
   }
 }

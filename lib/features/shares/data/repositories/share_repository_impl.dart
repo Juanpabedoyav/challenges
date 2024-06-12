@@ -8,6 +8,6 @@ class ShareRepositoryImpl implements SharesRepository {
   @override
   Future<ShareModel> getShares() async {
     final fetchList = await _apiClient.getShares();
-    return fetchList;
+    return ShareModel.fromJson(fetchList);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:challenge1/features/shares/presentation/provider/navbar_controller.dart';
 import 'package:challenge1/features/shares/presentation/provider/shares_controller.dart';
 import 'package:get_it/get_it.dart';
 import 'package:challenge1/core/utils/base_api.dart';
@@ -17,5 +18,7 @@ void injectionContainer() {
       () => GetSharesUseCase(ShareRepositoryImpl()));
 
   //presentation Layer
-  getIt.registerLazySingleton(() => SharesController());
+  getIt.registerLazySingleton(
+      () => SharesController(getSharesUseCase: GetIt.I<GetSharesUseCase>()));
+  getIt.registerLazySingleton(() => NavbarController());
 }

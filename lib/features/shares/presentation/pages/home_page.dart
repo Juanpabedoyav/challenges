@@ -5,17 +5,25 @@ import 'package:challenge1/features/shares/presentation/widgets/custom_money_dis
 import 'package:challenge1/features/shares/presentation/widgets/home_app_bar_title.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance),
+            label: 'My Account',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+      ),
       appBar: AppBar(
         toolbarHeight: 97,
         shape: const RoundedRectangleBorder(
@@ -51,20 +59,19 @@ class TopHomePageBody extends StatelessWidget {
             bottomLeft: BaseRadius.small,
             bottomRight: BaseRadius.small,
           )),
-      height: 250,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: const EdgeInsets.only(top: 56),
+            margin: const EdgeInsets.all(21),
             child: Text(
               'Your Budget',
-              style: Theme.of(context).textTheme.displaySmall,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
           CustomMoneyDisplay(
             amount: 2868000.12,
-            amountStyle: Theme.of(context).textTheme.displayLarge!,
+            amountStyle: Theme.of(context).textTheme.headlineLarge!,
             amountStyleSmall: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -74,15 +81,6 @@ class TopHomePageBody extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class MidHomePageBody extends StatelessWidget {
-  const MidHomePageBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
 

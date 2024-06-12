@@ -31,7 +31,7 @@ class CustomMoneyDisplay extends StatelessWidget {
       children: [
         Container(
           padding: padding,
-          child: Text('\$', style: amountStyleSmall),
+          child: Text('\$', style: amountStyle),
         ),
         RichText(
           text: TextSpan(children: [

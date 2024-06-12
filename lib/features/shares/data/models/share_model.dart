@@ -13,6 +13,7 @@ class ShareModel extends Share {
   factory ShareModel.fromJson(json) => ShareModel(
         code: json['code'],
         name: json['name'],
-        pairs: json['pairs'].map((pair) => pair.fromJson(pair)).toList(),
+        pairs: Map.from(json["pairs"])
+            .map((k, v) => MapEntry<String, double>(k, v?.toDouble())),
       );
 }
