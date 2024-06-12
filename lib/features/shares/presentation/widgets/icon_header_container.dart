@@ -1,4 +1,3 @@
-import 'package:challenge1/design_system/tokens/colors.dart';
 import 'package:flutter/material.dart';
 
 class IconHeaderContainer extends StatelessWidget {
