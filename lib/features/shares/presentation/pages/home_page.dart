@@ -19,24 +19,25 @@ class HomePage extends StatelessWidget {
             label: 'My Account',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.cloud),
+            label: 'Weather',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
           ),
         ],
       ),
       appBar: AppBar(
-        toolbarHeight: 97,
+        toolbarHeight: 60,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: BaseRadius.small,
             bottomRight: BaseRadius.small,
           ),
         ),
-        backgroundColor: BaseColors.brandPrimaryMat,
-        title: const Padding(
-          padding: EdgeInsets.fromLTRB(8, 30, 8, 20),
-          child: HomeAppBarTitle(),
-        ),
+        backgroundColor: BaseColors.scale01,
+        title: const HomeAppBarTitle(),
       ),
       body: const Column(
         children: [TopHomePageBody(), Expanded(child: BottomHomePageBody())],
@@ -51,8 +52,8 @@ class TopHomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(12),
       width: MediaQuery.of(context).size.width,
-      transform: Matrix4.translationValues(0, -12, 0),
       decoration: const BoxDecoration(
           color: BaseColors.scale02,
           borderRadius: BorderRadius.only(
@@ -62,12 +63,10 @@ class TopHomePageBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            margin: const EdgeInsets.all(21),
-            child: Text(
-              'Your Budget',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
+          const SizedBox(height: 8),
+          Text(
+            'Investment Account',
+            style: Theme.of(context).textTheme.labelSmall,
           ),
           CustomMoneyDisplay(
             amount: 2868000.12,
@@ -78,6 +77,18 @@ class TopHomePageBody extends StatelessWidget {
               color: BaseColors.bGBlack,
             ),
           ),
+          const SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                  onPressed: () => {}, child: const Text('+ Add Money')),
+              ElevatedButton(
+                  onPressed: () => {}, child: const Text('Withdraw')),
+              ElevatedButton(onPressed: () => {}, child: Icon(Icons.more_horiz))
+            ],
+          )
         ],
       ),
     );

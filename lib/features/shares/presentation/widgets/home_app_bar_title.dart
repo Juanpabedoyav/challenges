@@ -10,9 +10,6 @@ class HomeAppBarTitle extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 40,
-          height: 40,
-          margin: const EdgeInsets.only(right: 12),
           decoration: const BoxDecoration(
             color: BaseColors.bgWhite,
             borderRadius: BorderRadius.all(
@@ -22,8 +19,8 @@ class HomeAppBarTitle extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            'Store Name',
-            style: Theme.of(context).textTheme.headlineLarge,
+            'User Name',
+            style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
         IconHeaderContainer(

@@ -29,15 +29,16 @@ class CustomMoneyDisplay extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          padding: padding,
-          child: Text('\$', style: amountStyle),
-        ),
         RichText(
           text: TextSpan(children: [
-            TextSpan(text: splitConvertedValues[0], style: amountStyle),
             TextSpan(
-                text: ',${splitConvertedValues[1]}', style: amountStyleSmall)
+              text: '\$${splitConvertedValues[0]}',
+              style: amountStyle,
+            ),
+            TextSpan(
+              text: ',${splitConvertedValues[1]}',
+              style: amountStyleSmall,
+            )
           ]),
         )
       ],

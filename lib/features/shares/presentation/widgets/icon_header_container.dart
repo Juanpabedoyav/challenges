@@ -13,12 +13,6 @@ class IconHeaderContainer extends StatelessWidget {
       height: 40,
       width: 40,
       margin: configMargin,
-      decoration: BoxDecoration(
-        border: Border.all(color: BaseColors.bgDarkGray),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(12),
-        ),
-      ),
       child: iconButton,
     );
   }
