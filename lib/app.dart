@@ -1,3 +1,4 @@
+import 'package:challenge1/features/authentication/presentation/pages/login_screen.dart';
 import 'package:challenge1/features/shares/presentation/pages/home_page.dart';
 import 'package:challenge1/features/shares/presentation/provider/shares_controller.dart';
 import 'package:challenge1/injection_container.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
             create: (context) => getIt<SharesController>(),
           ),
         ],
-        child: const HomePage(),
+        child: const LoginScreen(),
       ),
     );
   }
