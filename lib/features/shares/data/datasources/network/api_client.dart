@@ -15,7 +15,7 @@ class ApiClient extends BaseApi {
             headers: {
               'x-rapidapi-host': 'ziff.p.rapidapi.com',
               'x-rapidapi-key':
-                  '3039ed9becmsh30b3d62963b1ff4p1a6367jsnfe145e558f5a',
+                  '51b8f15250msh9c9ce8084b39f5bp196f98jsnce2b491c98b8',
             },
           ));
       return response.data['data'];
