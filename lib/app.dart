@@ -25,7 +25,29 @@ class MyApp extends StatelessWidget {
                     GetSharesUseCase(GetIt.I<SharesRepository>())),
           ),
         ],
-        child: const LoginScreen(),
+        child: Navigator(
+          initialRoute: '/',
+          onGenerateRoute: (settings) {
+            switch (settings.name) {
+              case '/':
+                return MaterialPageRoute(
+                  builder: (context) => const LoginScreen(),
+                );
+              case '/account':
+                return MaterialPageRoute(
+                  builder: (context) => const HomePage(),
+                );
+              case '/weather':
+                return MaterialPageRoute(
+                  builder: (context) => const HomePage(),
+                );
+              default:
+                return MaterialPageRoute(
+                  builder: (context) => const LoginScreen(),
+                );
+            }
+          },
+        ),
       ),
     );
   }
