@@ -6,10 +6,9 @@ import 'package:flutter/material.dart';
 class SharesController extends ChangeNotifier {
   SharesController({
     required GetSharesUseCase getSharesUseCase,
-    ShareModel? shares,
     BaseControllerStates? initialState,
   })  : _getSharesUseCase = getSharesUseCase,
-        _shares = shares ?? ShareModel(),
+        _shares = ShareModel(pairs: {}),
         _status = initialState ?? BaseControllerStates.initial;
 
   //UseCase
@@ -26,10 +25,14 @@ class SharesController extends ChangeNotifier {
   Future<void> fetchShares() async {
     _status = BaseControllerStates.loading;
     notifyListeners();
-
-    final list = await _getSharesUseCase.call();
-    _shares = list;
-    _status = BaseControllerStates.success;
+    try {
+      final list = await _getSharesUseCase.call();
+      _shares = list;
+      _status = BaseControllerStates.success;
+      notifyListeners();
+    } catch (e) {
+      _status = BaseControllerStates.error;
+    }
     notifyListeners();
   }
 }

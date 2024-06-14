@@ -15,10 +15,10 @@ void injectionContainer() {
 
   //domain Layer
   getIt.registerFactory<GetSharesUseCase>(
-      () => GetSharesUseCase(ShareRepositoryImpl()));
+      () => GetSharesUseCase(GetIt.I<SharesRepository>()));
 
   //presentation Layer
-  getIt.registerLazySingleton(
+  getIt.registerSingleton(
       () => SharesController(getSharesUseCase: GetIt.I<GetSharesUseCase>()));
   getIt.registerLazySingleton(() => NavbarController());
 }
