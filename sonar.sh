@@ -6,5 +6,4 @@ flutter test
 flutter test --machine --coverage > tests.output 
 
 # Run the analysis and publish to the SonarQube server
-/Users/juanpabedoyav/Development/docker-repos/sonar-docker/sonar-scanner-5.0.1.3006-macosx/bin/sonar-scanner
-
+/Users/juanpabedoyav/Development/sonar-docker/sonar-scanner-5.0.1.3006-macosx/bin/sonar-scanner

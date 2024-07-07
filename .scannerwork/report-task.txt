@@ -1,6 +1,6 @@
-projectKey=challenge1_flutter
+projectKey=apps-ecommerce-flutter-test
 serverUrl=http://localhost:9000
-serverVersion=9.9.5.90363
-dashboardUrl=http://localhost:9000/dashboard?id=challenge1_flutter
-ceTaskId=AY-m_X6KNeDk-b50VCyB
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AY-m_X6KNeDk-b50VCyB
+serverVersion=10.5.1.90531
+dashboardUrl=http://localhost:9000/dashboard?id=apps-ecommerce-flutter-test
+ceTaskId=af08652e-35f7-4e91-997e-1438775fdd8f
+ceTaskUrl=http://localhost:9000/api/ce/task?id=af08652e-35f7-4e91-997e-1438775fdd8f

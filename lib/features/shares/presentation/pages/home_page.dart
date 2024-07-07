@@ -1,11 +1,9 @@
 import 'package:challenge1/design_system/tokens/colors.dart';
 import 'package:challenge1/design_system/tokens/radius.dart';
 import 'package:challenge1/features/shares/presentation/pages/shares_screen.dart';
-import 'package:challenge1/features/shares/presentation/provider/shares_controller.dart';
 import 'package:challenge1/features/shares/presentation/widgets/custom_money_display.dart';
 import 'package:challenge1/features/shares/presentation/widgets/home_app_bar_title.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

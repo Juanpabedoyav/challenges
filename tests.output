@@ -1,27 +1,11 @@
-{"protocolVersion":"0.1.1","runnerVersion":null,"pid":17998,"type":"start","time":0}
-{"suite":{"id":0,"platform":"vm","path":"/Users/juanpabedoyav/Development/retos/challenges/test/features/shares/data/datasources/shares_remote_data_source_test.dart"},"type":"suite","time":0}
-{"test":{"id":1,"name":"loading /Users/juanpabedoyav/Development/retos/challenges/test/features/shares/data/datasources/shares_remote_data_source_test.dart","suiteID":0,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":0}
-{"suite":{"id":2,"platform":"vm","path":"/Users/juanpabedoyav/Development/retos/challenges/test/features/shares/data/repositories/share_repository_impl_test.dart"},"type":"suite","time":2}
-{"test":{"id":3,"name":"loading /Users/juanpabedoyav/Development/retos/challenges/test/features/shares/data/repositories/share_repository_impl_test.dart","suiteID":2,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":2}
-{"suite":{"id":4,"platform":"vm","path":"/Users/juanpabedoyav/Development/retos/challenges/test/features/shares/domain/usecases/get_shares_test.dart"},"type":"suite","time":2}
-{"test":{"id":5,"name":"loading /Users/juanpabedoyav/Development/retos/challenges/test/features/shares/domain/usecases/get_shares_test.dart","suiteID":4,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":2}
-{"count":3,"time":2,"type":"allSuites"}
+{"protocolVersion":"0.1.1","runnerVersion":null,"pid":1870,"type":"start","time":0}
+{"suite":{"id":0,"platform":"vm","path":"/Users/juanpabedoyav/Development/challenges/test/widget_test.dart"},"type":"suite","time":0}
+{"test":{"id":1,"name":"loading /Users/juanpabedoyav/Development/challenges/test/widget_test.dart","suiteID":0,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":0}
+{"count":1,"time":3,"type":"allSuites"}
 
-[{"event":"test.startedProcess","params":{"vmServiceUri":"http://127.0.0.1:51378/N77nCD7G6wM=/","observatoryUri":"http://127.0.0.1:51378/N77nCD7G6wM=/"}}]
-
-[{"event":"test.startedProcess","params":{"vmServiceUri":"http://127.0.0.1:51379/YwsHKo4PVEw=/","observatoryUri":"http://127.0.0.1:51379/YwsHKo4PVEw=/"}}]
-{"testID":3,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":1432}
-{"group":{"id":6,"suiteID":2,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":null,"column":null,"url":null},"type":"group","time":1433}
-{"test":{"id":7,"name":"should return shares from repository","suiteID":2,"groupIDs":[6],"metadata":{"skip":false,"skipReason":null},"line":23,"column":3,"url":"file:///Users/juanpabedoyav/Development/retos/challenges/test/features/shares/data/repositories/share_repository_impl_test.dart"},"type":"testStart","time":1433}
-{"testID":1,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":1434}
-{"group":{"id":8,"suiteID":0,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":null,"column":null,"url":null},"type":"group","time":1434}
-{"test":{"id":9,"name":"should perform a GET request on a url","suiteID":0,"groupIDs":[8],"metadata":{"skip":false,"skipReason":null},"line":63,"column":3,"url":"file:///Users/juanpabedoyav/Development/retos/challenges/test/features/shares/data/datasources/shares_remote_data_source_test.dart"},"type":"testStart","time":1434}
-{"testID":7,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":1449}
-{"testID":9,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":1453}
-
-[{"event":"test.startedProcess","params":{"vmServiceUri":"http://127.0.0.1:51389/WV9MUfyEqdc=/","observatoryUri":"http://127.0.0.1:51389/WV9MUfyEqdc=/"}}]
-{"testID":5,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":1869}
-{"group":{"id":10,"suiteID":4,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":null,"column":null,"url":null},"type":"group","time":1869}
-{"test":{"id":11,"name":"should return shares","suiteID":4,"groupIDs":[10],"metadata":{"skip":false,"skipReason":null},"line":22,"column":3,"url":"file:///Users/juanpabedoyav/Development/retos/challenges/test/features/shares/domain/usecases/get_shares_test.dart"},"type":"testStart","time":1869}
-{"testID":11,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":1885}
-{"success":true,"type":"done","time":2148}
+[{"event":"test.startedProcess","params":{"vmServiceUri":"http://127.0.0.1:58990/i3Zy19Xoj7o=/","observatoryUri":"http://127.0.0.1:58990/i3Zy19Xoj7o=/"}}]
+{"testID":1,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":1055}
+{"group":{"id":2,"suiteID":0,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":null,"column":null,"url":null},"type":"group","time":1056}
+{"test":{"id":3,"name":"Counter increments smoke test","suiteID":0,"groupIDs":[2],"metadata":{"skip":false,"skipReason":null},"line":4,"column":3,"url":"file:///Users/juanpabedoyav/Development/challenges/test/widget_test.dart"},"type":"testStart","time":1056}
+{"testID":3,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":1065}
+{"success":true,"type":"done","time":1345}
