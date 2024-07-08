@@ -1,4 +1,5 @@
 import 'package:challenge1/features/authentication/presentation/pages/login_screen.dart';
+import 'package:challenge1/features/authentication/presentation/provider/google_sign_in_controller.dart';
 import 'package:challenge1/features/shares/domain/repositories/share_repository.dart';
 import 'package:challenge1/features/shares/domain/usecases/get_shares_use_case.dart';
 import 'package:challenge1/features/shares/presentation/pages/home_page.dart';
@@ -21,8 +22,11 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider<SharesController>(
             create: (_) => SharesController(
-                getSharesUseCase:
-                    GetSharesUseCase(GetIt.I<SharesRepository>())),
+              getSharesUseCase: GetSharesUseCase(GetIt.I<SharesRepository>()),
+            ),
+          ),
+          ChangeNotifierProvider<GoogleSignInController>(
+            create: (context) => GoogleSignInController(),
           ),
         ],
         child: Navigator(
